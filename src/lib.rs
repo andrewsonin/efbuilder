@@ -206,7 +206,7 @@ pub fn derive_builder(input: TokenStream) -> TokenStream
                 ::std::stringify!(#builder_name),
                 "`]."
             )]
-            pub const fn new(self) -> Self
+            pub const fn new() -> Self
             {
                 Self {
                     #(#fields_uninit),*
