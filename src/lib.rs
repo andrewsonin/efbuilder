@@ -200,6 +200,7 @@ pub fn derive_builder(input: TokenStream) -> TokenStream
         impl #impl_generics #builder_name <#lifetimes #all_consts_false #(#type_idents),*>
             #where_clause
         {
+            #[must_use]
             #[inline(always)]
             #[doc = concat!(
                 " Creates a new instance of [`",
@@ -296,6 +297,7 @@ pub fn derive_builder(input: TokenStream) -> TokenStream
                     #builder_name <#lifetimes #consts_self #(#type_idents),*>
                         #where_clause
                     {
+                        #[must_use]
                         #(#doc_attrs)*
                         #[inline(always)]
                         pub fn #ident(

@@ -1,6 +1,6 @@
 [package]
 name = "efbuilder"
-version = "0.0.3"
+version = "0.0.4"
 authors = ["Andrew Sonin <sonin.cel@yandex.ru>"]
 description = "A procedural macro for generating efficient builders."
 categories = ["development-tools::procedural-macro-helpers"]
