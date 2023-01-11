@@ -168,6 +168,8 @@ pub fn derive_builder(input: TokenStream) -> TokenStream
         impl #impl_generics #builder_name <#lifetimes #all_consts_true #(#type_idents),*>
             #where_clause
         {
+            #[inline(always)]
+            #[doc = concat!(" Builds [`", ::std::stringify!(#ident), "`].")]
             pub const fn build(self) -> #ident #ty_generics
             {
                 let Self {
@@ -198,6 +200,12 @@ pub fn derive_builder(input: TokenStream) -> TokenStream
         impl #impl_generics #builder_name <#lifetimes #all_consts_false #(#type_idents),*>
             #where_clause
         {
+            #[inline(always)]
+            #[doc = concat!(
+                " Creates a new instance of [`",
+                ::std::stringify!(#builder_name),
+                "`]."
+            )]
             pub const fn new(self) -> Self
             {
                 Self {
@@ -289,6 +297,7 @@ pub fn derive_builder(input: TokenStream) -> TokenStream
                         #where_clause
                     {
                         #(#doc_attrs)*
+                        #[inline(always)]
                         pub fn #ident(
                             self,
                             value: #ty) -> #builder_name <#lifetimes #consts_res #(#type_idents),*>
